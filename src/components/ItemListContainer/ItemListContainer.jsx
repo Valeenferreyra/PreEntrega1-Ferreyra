@@ -17,15 +17,15 @@ export const ItemListContainer = () => {
         .then((resp) => {
         
         if (category) {
-          
+        
             const productsFilter = resp.filter((product) => product.category === category);
             
-          
+        
             if(productsFilter.length > 0) {
-              
+            
                 setProducts(productsFilter);
             } else {
-              
+            
                 setProducts(resp);
             }
 
@@ -35,10 +35,10 @@ export const ItemListContainer = () => {
             setProducts(resp);
         }
 
-        
+        setIsLoading(false);
         })
         .catch((error) => console.log(error));
-  }, [category]); 
+    }, [category]); 
 
     return <>{isLoading ? <h2> Cargando productos... </h2> : <ItemList products={products} />}</>;
 };
